@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Neon Chase Arena</title>
+<style>
+    body { margin: 0; overflow: hidden; background: #111; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; user-select: none; }
+    
+    /* Game Container */
+    #game-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+    canvas { background: #1a1a1a; box-shadow: 0 0 50px rgba(0,0,0,0.5); border: 2px solid #333; max-width: 100%; max-height: 100%; }
+
+    /* UI Overlay */
+    #ui-layer { position: absolute; top: 10px; left: 10px; pointer-events: none; }
+    .stat-box { background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; border-left: 4px solid cyan; margin-bottom: 10px; }
+    
+    /* Mobile Controls */
+    #controls { position: absolute; bottom: 20px; width: 100%; display: none; justify-content: space-between; padding: 0 20px; box-sizing: border-box; pointer-events: none; }
+    .d-pad { position: relative; width: 150px; height: 150px; pointer-events: auto; }
+    .action-pad { position: relative; width: 100px; height: 150px; pointer-events: auto; display: flex; align-items: center; }
+    
+    button { 
+        position: absolute; width: 60px; height: 60px; 
+        background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255,255,255,0.2); 
+        border-radius: 50%; color: white; font-size: 24px; touch-action: manipulation; 
+        backdrop-filter: blur(4px);
+    }
+    button:active { background: rgba(0, 255, 255, 0.3); border-color: cyan; transform: scale(0.95); }
+    
+    /* D-PAD Positioning */
+    #up { top: 0; left: 45px; }
+    #down { bottom: 0; left: 45px; }
+    #left { top: 45px; left: 0; }
+    #right { top: 45px; right: 0; }
+    
+    /* Action Positioning */
+    #nitro { width: 80px; height: 80px; background: rgba(255, 165, 0, 0.2); border-color: orange; right: 0; bottom: 20px; }
+
+    /* Show controls only on touch devices (approximate) */
+    @media (pointer: coarse) {
+        #controls { display: flex; }
+    }
+</style>
+</head>
+<body>
+
+<div id="game-container">
+    <canvas id="game"></canvas>
+    
+    <div id="ui-layer">
+        <div class="stat-box">
+            <div>Players: <span id="player-count">0</span></div>
+            <div>Leader: <span id="leader-name">-</span></div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <div class="d-pad">
+            <button id="up">▲</button>
+            <button id="down">▼</button>
+            <button id="left">◀</button>
+            <button id="right">▶</button>
+        </div>
+        <div class="action-pad">
+            <button id="nitro">⚡</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
