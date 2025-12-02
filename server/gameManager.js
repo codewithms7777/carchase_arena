@@ -160,12 +160,12 @@ class GameManager {
         this.powerUps=[];
     }
 }
-class GameManager {
-    constructor() {
-        this.cars = []; 
-        this.colors = ["#FF0055", "#00FFFF", "#55FF00", "#FFaa00", "#AA00FF", "#FFFF00"];
-        this.powerUps = [];
-    }
+// class GameManager {
+//     constructor() {
+//         this.cars = []; 
+//         this.colors = ["#FF0055", "#00FFFF", "#55FF00", "#FFaa00", "#AA00FF", "#FFFF00"];
+//         this.powerUps = [];
+//     }
 
     addPlayer(id) {
         this.cars.push({
@@ -338,3 +338,4 @@ class GameManager {
 
 
 module.exports=GameManager;
+
