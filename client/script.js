@@ -4,7 +4,7 @@ canvas.height = 600;
 const ctx = canvas.getContext("2d");
 
 // Connect to server (Ensure port matches server/index.js)
-const socket = io("http://127.0.0.1:5000");
+const socket = io("https://carchase-arena.onrender.com");
 
 
 // --- Game State ---
@@ -266,5 +266,6 @@ function resize() {
     // (Optional: Implement responsive canvas scaling here if desired)
 }
 window.addEventListener('resize', resize);
+
 
 loop();
