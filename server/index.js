@@ -2,6 +2,12 @@ const express=require("express");
 const http=require("http");
 const {Server}=require("socket.io");
 const GameManager=require("./gameManager");
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*"
+  }
+});
+
 
 const app=express();
 const server=http.createServer(app);
@@ -29,3 +35,4 @@ setInterval(()=>{
 },33);
 
 server.listen(5000,()=>console.log("Server running on port 5000"));
+
